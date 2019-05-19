@@ -1,3 +1,4 @@
+
 #include <iostream>
 
 int main(int argc, const char* argv[]) {
@@ -12,7 +13,8 @@ int main(int argc, const char* argv[]) {
 		std::cout << "init\tCreate an empty Git repository or reinitialize an existing one" << std::endl;
 		std::cout << "add\tAdd file contents to the index" << std::endl;
 		std::cout << "commit\tRecord changes to the repository" << std::endl;
-	}else if (std::string(argv[2]) == "-help") {
+	}
+	else if (std::string(argv[2]) == "-help") {
 		if (std::string(argv[1]) == "init") {
 			std::cout << "usage: gitus init" << std::endl;
 		}
