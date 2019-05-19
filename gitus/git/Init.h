@@ -4,29 +4,12 @@
 #include <boost/filesystem.hpp>
 
 class Init {
-	std::string m_GIT_DIR;
+	boost::filesystem::path m_project_dir;
+	boost::filesystem::path m_git_dir;
 public:
 	Init(std::string gitFolderPath);
 	~Init();
 	void createGitFolder();
-	void createHeadsFolder();
-	void createTagsFolder();
-
+	void createFolder(std::string extension);
+	void createHeadFile();
 };
-
-Init::Init(std::string gitFolderPath)
-	: m_GIT_DIR(gitFolderPath) {}
-
-Init::~Init(){}
-
-void Init::createGitFolder() {
-
-}
-
-void Init::createHeadsFolder() {
-
-}
-
-void Init::createTagsFolder() {
-
-}
