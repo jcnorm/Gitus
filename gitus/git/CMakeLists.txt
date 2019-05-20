@@ -7,6 +7,9 @@ add_library(git
 target_include_directories(git 
     PRIVATE 
         ${Boost_INCLUDE_DIRS}
-    PUBLIC 
-        $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}>
+)
+
+target_link_libraries(git
+	PRIVATE
+		Boost::filesystem
 )

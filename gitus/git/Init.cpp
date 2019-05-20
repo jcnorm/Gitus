@@ -1,36 +1,13 @@
-#include <string>
-#include <boost/filesystem.hpp>
-#include <iostream>
-
 #include "Init.h"
+#include <boost/filesystem.hpp>
 
-Init::Init(std::string gitFolderPath)
-	: m_project_dir(gitFolderPath)
-{
-	m_git_dir = m_project_dir / ".git";
-	Init::createGitFolder();
-}
-
-Init::~Init() {}
-
-void Init::createGitFolder() {
-	if (!exists(m_git_dir))
-		boost::filesystem::create_directory(m_git_dir);
-	Init::createFolder("refs/heads");
-	Init::createFolder("refs/tags");
-	Init::createFolder("objects");
-	Init::createHeadFile();
-}
-
-void Init::createFolder(std::string extension) {
-	if (!exists(m_git_dir / extension))
-		boost::filesystem::create_directory(m_git_dir / extension);
-}
-
-void Init::createHeadFile() {
-	if (!exists(m_git_dir / "HEAD")) {
-		boost::filesystem::ofstream headFile(m_git_dir / "HEAD");
-		headFile << "ref:	refs/heads/master";
-		headFile.close();
-	}
+void initialise(const std::string &gitProjectPath) {
+	boost::filesystem::path gitFolderPath = gitProjectPath + "/.git";
+	boost::filesystem::create_directory(gitFolderPath);
+	boost::filesystem::create_directory(gitFolderPath / "refs");
+	boost::filesystem::create_directory(gitFolderPath / "refs" / "heads");
+	boost::filesystem::create_directory(gitFolderPath / "objects");
+	boost::filesystem::ofstream headFile(gitFolderPath / "HEAD");
+	headFile << "ref:	refs/heads/master";
+	headFile.close();
 }

@@ -1,15 +1,7 @@
 #pragma once
 
 #include <string>
-#include <boost/filesystem.hpp>
 
-class Init {
-	boost::filesystem::path m_project_dir;
-	boost::filesystem::path m_git_dir;
-public:
-	Init(std::string gitFolderPath);
-	~Init();
-	void createGitFolder();
-	void createFolder(std::string extension);
-	void createHeadFile();
-};
+void initialise(const std::string& gitProjectPath);
+void createFolder(const std::string& extension, const std::string& gitFolderPath);
+void createHeadFile(const std::string& gitFolderPath);

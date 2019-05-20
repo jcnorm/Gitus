@@ -1,4 +1,5 @@
 #include <iostream>
+#include "git/Init.h"
 
 int main(int argc, const char* argv[]) {
 	if (argc == 2 && std::string(argv[1]) == "-help") {
@@ -19,6 +20,7 @@ int main(int argc, const char* argv[]) {
 		}
 	} else if (argc == 2 && std::string(argv[1]) == "init") {
 		std::cout << "Initialising" << std::endl;
+		initialise("C:/Users/Jcnorm/Desktop");
 	}
 
 	return 0;
