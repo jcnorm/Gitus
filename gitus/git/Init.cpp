@@ -1,8 +1,8 @@
 #include "Init.h"
 #include <boost/filesystem.hpp>
 
-void initialise(const std::string &gitProjectPath) {
-	boost::filesystem::path gitFolderPath = gitProjectPath + "/.git";
+void initialise() {
+	boost::filesystem::path gitFolderPath = boost::filesystem::current_path() / "/.git";
 	boost::filesystem::create_directory(gitFolderPath);
 	boost::filesystem::create_directory(gitFolderPath / "refs");
 	boost::filesystem::create_directory(gitFolderPath / "refs" / "heads");
@@ -10,4 +10,6 @@ void initialise(const std::string &gitProjectPath) {
 	boost::filesystem::ofstream headFile(gitFolderPath / "HEAD");
 	headFile << "ref:	refs/heads/master";
 	headFile.close();
+	boost::filesystem::ofstream indexFile(gitFolderPath / "index");
+	indexFile.close();
 }
