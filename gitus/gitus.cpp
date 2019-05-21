@@ -21,8 +21,8 @@ int main(int argc, const char* argv[]) {
 		}
 	} else if (argc == 2 && std::string(argv[1]) == "init") {
 		initialise();
-	} else if (argc == 2 && std::string(argv[1]) == "add") {
-		add();
+	} else if (argc == 3 && std::string(argv[1]) == "add") {
+		add(std::string(argv[2]));
 	}
 
 	return 0;
